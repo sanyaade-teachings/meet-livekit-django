@@ -85,7 +85,10 @@
       "closed": "Show AI assistant"
     },
     "support": "Support",
-    "moreOptions": "More options"
+    "moreOptions": "More options",
+    "reactions": {
+      "button": "Send reaction"
+    }
   },
   "options": {
     "buttonLabel": "More Options",

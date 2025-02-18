@@ -18,6 +18,7 @@ const NotificationDuration = {
   MESSAGE: ToastDuration.LONG,
   PARTICIPANT_JOINED: ToastDuration.LONG,
   HAND_RAISED: ToastDuration.LONG,
+  REACTION_RECEIVED: ToastDuration.SHORT,
 } as const
 
 export const MainNotificationToast = () => {
@@ -52,7 +53,9 @@ export const MainNotificationToast = () => {
       participant?: RemoteParticipant
     ) => {
       const decoder = new TextDecoder()
-      const notificationType = decoder.decode(payload)
+      const notificationPayload = JSON.parse(decoder.decode(payload))
+      const notificationType = notificationPayload.type
+      const data = notificationPayload.data
 
       if (!participant) return
 
@@ -66,6 +69,17 @@ export const MainNotificationToast = () => {
             { timeout: NotificationDuration.ALERT }
           )
           break
+        case NotificationType.ReactionReceived:
+            triggerNotificationSound(NotificationType.ReactionReceived)
+            toastQueue.add(
+              {
+                participant,
+                type: NotificationType.ReactionReceived,
+                message: data?.emoji
+              },
+              { timeout: NotificationDuration.REACTION_RECEIVED }
+            )
+          break
         default:
           return
       }
@@ -74,7 +88,7 @@ export const MainNotificationToast = () => {
     return () => {
       room.off(RoomEvent.DataReceived, handleDataReceived)
     }
-  }, [room])
+  }, [room, triggerNotificationSound])
 
   useEffect(() => {
     const showJoinNotification = (participant: Participant) => {

@@ -29,7 +29,8 @@
     "items": {
       "participantJoined": "Participant joined",
       "handRaised": "Hand raised",
-      "messageReceived": "Message received"
+      "messageReceived": "Message received",
+      "reactionReceived": "Reaction received"
     }
   },
   "dialog": {

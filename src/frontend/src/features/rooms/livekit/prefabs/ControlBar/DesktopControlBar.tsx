@@ -4,6 +4,7 @@ import { css } from '@/styled-system/css'
 import { LeaveButton } from '../../components/controls/LeaveButton'
 import { SelectToggleDevice } from '../../components/controls/SelectToggleDevice'
 import { Track } from 'livekit-client'
+import { ReactionsButton } from '../../components/controls/ReactionsButton'
 import { HandToggle } from '../../components/controls/HandToggle'
 import { ScreenShareToggle } from '../../components/controls/ScreenShareToggle'
 import { OptionsButton } from '../../components/controls/Options/OptionsButton'
@@ -53,6 +54,7 @@ export function DesktopControlBar({
             gap: '0.65rem',
           })}
         >
+          <ReactionsButton />
           <SelectToggleDevice
             source={Track.Source.Microphone}
             onChange={microphoneOnChange}

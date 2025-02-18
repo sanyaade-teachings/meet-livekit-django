@@ -29,7 +29,8 @@
     "items": {
       "participantJoined": "Un nouveau participant",
       "handRaised": "Une main levée",
-      "messageReceived": "Un message reçu"
+      "messageReceived": "Un message reçu",
+      "reactionReceived": "Une réaction reçue"
     }
   },
   "dialog": {

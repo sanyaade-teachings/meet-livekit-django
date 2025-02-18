@@ -13,6 +13,7 @@ export const useNotificationSound = () => {
       messageReceived: [1580, 300],
       waiting: [2039, 710],
       success: [2740, 1304],
+      reactionReceived: [1580, 300],
     },
     volume: notificationsSnap.soundNotificationVolume,
   })
