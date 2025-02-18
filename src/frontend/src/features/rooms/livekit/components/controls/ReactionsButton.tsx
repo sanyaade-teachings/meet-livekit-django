@@ -29,25 +29,30 @@ export const ReactionsButton = () => {
       type: NotificationType.ReactionReceived,
       data: {
         emoji: emoji,
-      }
+      },
     }
     const data = encoder.encode(JSON.stringify(payload))
     await room.localParticipant.publishData(data, { reliable: true })
     setIsOpen(false)
-    
+
     // Create a new emoji portal instance with unique ID
     const newInstance = { id: instanceIdRef.current++, emoji }
-    setEmojiInstances(prev => [...prev, newInstance])
-    
+    setEmojiInstances((prev) => [...prev, newInstance])
+
     // Remove this instance after animation
     setTimeout(() => {
-      setEmojiInstances(prev => prev.filter(instance => instance.id !== newInstance.id))
+      setEmojiInstances((prev) =>
+        prev.filter((instance) => instance.id !== newInstance.id)
+      )
     }, 3000)
   }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false)
       }
     }
@@ -99,8 +104,8 @@ export const ReactionsButton = () => {
                   borderRadius: '0.25rem',
                   color: 'white',
                   '&:hover': {
-                    backgroundColor: 'gray.700'
-                  }
+                    backgroundColor: 'gray.700',
+                  },
                 })}
                 onClick={() => sendReaction(emoji)}
               >
@@ -110,7 +115,7 @@ export const ReactionsButton = () => {
           </div>
         )}
       </div>
-      {emojiInstances.map(instance => (
+      {emojiInstances.map((instance) => (
         <EmojiPortal key={instance.id} emoji={instance.emoji} />
       ))}
     </>

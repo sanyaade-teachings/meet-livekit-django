@@ -14,7 +14,7 @@ export const useMuteParticipant = () => {
   const notifyParticipant = async (participant: Participant) => {
     const encoder = new TextEncoder()
     const payload: NotificationPayload = {
-      type: NotificationType.ParticipantMuted
+      type: NotificationType.ParticipantMuted,
     }
     const data = encoder.encode(JSON.stringify(payload))
     await room.localParticipant.publishData(data, {

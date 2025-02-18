@@ -39,4 +39,4 @@ export function ToastReaction({ state, ...props }: ToastProps) {
       <EmojiPortal emoji={emoji} />
     </StyledToastContainer>
   )
-} 
+}

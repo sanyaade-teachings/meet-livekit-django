@@ -5,4 +5,4 @@ export interface NotificationPayload {
   data?: {
     emoji?: string
   }
-} 
+}

@@ -70,15 +70,15 @@ export const MainNotificationToast = () => {
           )
           break
         case NotificationType.ReactionReceived:
-            triggerNotificationSound(NotificationType.ReactionReceived)
-            toastQueue.add(
-              {
-                participant,
-                type: NotificationType.ReactionReceived,
-                message: data?.emoji
-              },
-              { timeout: NotificationDuration.REACTION_RECEIVED }
-            )
+          triggerNotificationSound(NotificationType.ReactionReceived)
+          toastQueue.add(
+            {
+              participant,
+              type: NotificationType.ReactionReceived,
+              message: data?.emoji,
+            },
+            { timeout: NotificationDuration.REACTION_RECEIVED }
+          )
           break
         default:
           return
